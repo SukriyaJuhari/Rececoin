@@ -21,108 +21,110 @@
     <button id="btnLogout" style="display:none">Logout</button>
   </div>
   
-  <script type="module">
-    // ----- IMPORT FIREBASE (modular) -----
-    
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-    
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBfbW0F9qYu7SdIT2cG7IGOZcB3wsuskk8",
-      authDomain: "rececoin-76b27.firebaseapp.com",
-      projectId: "rececoin-76b27",
-      storageBucket: "rececoin-76b27.firebasestorage.app",
-      messagingSenderId: "173498076766",
-      appId: "1:173498076766:web:f757e9fa76e93b8727aecf"
-    };
-    
-    // ----- INIT -----
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    
-    // ----- ELEM -----
-    const emailEl = document.getElementById("email");
-    const passEl = document.getElementById("password");
-    const btnRegister = document.getElementById("btnRegister");
-    const btnLogin = document.getElementById("btnLogin");
-    const btnLogout = document.getElementById("btnLogout");
-    
-    // ----- REGISTER -----
-    // REGISTER
-registerBtn.addEventListener("click", async () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
 
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const uid = userCredential.user.uid;
+<script type="module">
+  // ----- IMPORT FIREBASE (VERSI SAMA) -----
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 
-    // === Tambahkan Firestore data user baru ===
-    await setDoc(doc(db, "users", uid), {
-      coins: 0,
-      createdAt: serverTimestamp()
-    });
+  import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
-    alert("Registrasi berhasil!");
-  } catch (error) {
-    alert(error.message);
-  }
-});
+  // ----- CONFIG -----
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfbW0F9qYu7SdIT2cG7IGOZcB3wsuskk8",
+    authDomain: "rececoin-76b27.firebaseapp.com",
+    projectId: "rececoin-76b27",
+    storageBucket: "rececoin-76b27.firebasestorage.app",
+    messagingSenderId: "173498076766",
+    appId: "1:173498076766:web:f757e9fa76e93b8727aecf"
+  };
 
-    
-    // ----- LOGIN -----
-    btnLogin.addEventListener("click", async () => {
-      const email = emailEl.value.trim();
-      const pass = passEl.value;
-      if (!email || !pass) return alert("Isi email & password.");
-      try {
-        await signInWithEmailAndPassword(auth, email, pass);
-        // sukses -> ke dashboard
-        location.href = "dashboard.html";
-      } catch (err) {
-        alert("Gagal login: " + err.message);
-      }
-    });
-    
-    // ----- LOGOUT -----
-    btnLogout.addEventListener("click", async () => {
-      try {
-        await signOut(auth);
-        alert("Logout berhasil");
-        // kembali ke halaman login (tetap index.html)
-        location.href = "index.html";
-      } catch (err) {
-        alert("Gagal logout: " + err.message);
-      }
-    });
+  // ----- INIT -----
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
-import { getFirestore, doc, setDoc, serverTimestamp } 
-  from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+  // ----- ELEM -----
+  const emailEl = document.getElementById("email");
+  const passEl = document.getElementById("password");
+  const btnRegister = document.getElementById("btnRegister");
+  const btnLogin = document.getElementById("btnLogin");
+  const btnLogout = document.getElementById("btnLogout");
 
-const db = getFirestore(app);
-    
-    
-    // ----- AUTO UI (tampilkan logout kalau sudah login) -----
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // user logged in
-        btnLogout.style.display = "inline";
-        btnLogin.style.display = "none";
-        btnRegister.style.display = "none";
-      } else {
-        // not logged in
-        btnLogout.style.display = "none";
-        btnLogin.style.display = "inline";
-        btnRegister.style.display = "inline";
-      }
-    });
-    
-    // Expose auth for debugging (opsional)
-    window.rececoin = { app, auth };
-  </script>
+  // REGISTER
+  btnRegister.addEventListener("click", async () => {
+    const email = emailEl.value;
+    const password = passEl.value;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const uid = userCredential.user.uid;
+
+      // Buat data user di Firestore
+      await setDoc(doc(db, "users", uid), {
+        coins: 0,
+        createdAt: serverTimestamp()
+      });
+
+      alert("Registrasi berhasil!");
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+
+  // LOGIN
+  btnLogin.addEventListener("click", async () => {
+    const email = emailEl.value.trim();
+    const pass = passEl.value;
+    if (!email || !pass) return alert("Isi email & password.");
+
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      location.href = "dashboard.html";
+    } catch (err) {
+      alert("Gagal login: " + err.message);
+    }
+  });
+
+  // LOGOUT
+  btnLogout.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      alert("Logout berhasil");
+      location.href = "index.html";
+    } catch (err) {
+      alert("Gagal logout: " + err.message);
+    }
+  });
+
+  // UI Otomatis
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      btnLogout.style.display = "inline";
+      btnLogin.style.display = "none";
+      btnRegister.style.display = "none";
+    } else {
+      btnLogout.style.display = "none";
+      btnLogin.style.display = "inline";
+      btnRegister.style.display = "inline";
+    }
+  });
+
+  window.rececoin = { app, auth };
+</script>
+
+
 </body>
 
 </html>
