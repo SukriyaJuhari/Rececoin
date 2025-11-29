@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rececoin</title>
+</head>
+
+<body>
+  <h2>Rececoin — Login / Register</h2>
+  
+  <div>
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+  </div>
+  
+  <div>
+    <button id="btnRegister">Register</button>
+    <button id="btnLogin">Login</button>
+    <button id="btnLogout" style="display:none">Logout</button>
+  </div>
+  
+  <script type="module">
+    // ----- IMPORT FIREBASE (modular) -----
+    
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfbW0F9qYu7SdIT2cG7IGOZcB3wsuskk8",
+      authDomain: "rececoin-76b27.firebaseapp.com",
+      projectId: "rececoin-76b27",
+      storageBucket: "rececoin-76b27.firebasestorage.app",
+      messagingSenderId: "173498076766",
+      appId: "1:173498076766:web:f757e9fa76e93b8727aecf"
+    };
+    
+    // ----- INIT -----
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    
+    // ----- ELEM -----
+    const emailEl = document.getElementById("email");
+    const passEl = document.getElementById("password");
+    const btnRegister = document.getElementById("btnRegister");
+    const btnLogin = document.getElementById("btnLogin");
+    const btnLogout = document.getElementById("btnLogout");
+    
+    // ----- REGISTER -----
+    btnRegister.addEventListener("click", async () => {
+      const email = emailEl.value.trim();
+      const pass = passEl.value;
+      if (!email || !pass) return alert("Isi email & password.");
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, pass);
+        alert("Registrasi berhasil: " + userCred.user.email);
+        // redirect ke dashboard (nanti buat dashboard.html)
+        location.href = "dashboard.html";
+      } catch (err) {
+        alert("Gagal registrasi: " + err.message);
+      }
+    });
+    
+    // ----- LOGIN -----
+    btnLogin.addEventListener("click", async () => {
+      const email = emailEl.value.trim();
+      const pass = passEl.value;
+      if (!email || !pass) return alert("Isi email & password.");
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        // sukses -> ke dashboard
+        location.href = "dashboard.html";
+      } catch (err) {
+        alert("Gagal login: " + err.message);
+      }
+    });
+    
+    // ----- LOGOUT -----
+    btnLogout.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        alert("Logout berhasil");
+        // kembali ke halaman login (tetap index.html)
+        location.href = "index.html";
+      } catch (err) {
+        alert("Gagal logout: " + err.message);
+      }
+    });
+    
+    // ----- AUTO UI (tampilkan logout kalau sudah login) -----
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // user logged in
+        btnLogout.style.display = "inline";
+        btnLogin.style.display = "none";
+        btnRegister.style.display = "none";
+      } else {
+        // not logged in
+        btnLogout.style.display = "none";
+        btnLogin.style.display = "inline";
+        btnRegister.style.display = "inline";
+      }
+    });
+    
+    // Expose auth for debugging (opsional)
+    window.rececoin = { app, auth };
+  </script>
+</body>
+
+</html>
