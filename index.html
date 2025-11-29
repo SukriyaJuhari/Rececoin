@@ -51,19 +51,27 @@
     const btnLogout = document.getElementById("btnLogout");
     
     // ----- REGISTER -----
-    btnRegister.addEventListener("click", async () => {
-      const email = emailEl.value.trim();
-      const pass = passEl.value;
-      if (!email || !pass) return alert("Isi email & password.");
-      try {
-        const userCred = await createUserWithEmailAndPassword(auth, email, pass);
-        alert("Registrasi berhasil: " + userCred.user.email);
-        // redirect ke dashboard (nanti buat dashboard.html)
-        location.href = "dashboard.html";
-      } catch (err) {
-        alert("Gagal registrasi: " + err.message);
-      }
+    // REGISTER
+registerBtn.addEventListener("click", async () => {
+  const email = emailInput.value;
+  const password = passwordInput.value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const uid = userCredential.user.uid;
+
+    // === Tambahkan Firestore data user baru ===
+    await setDoc(doc(db, "users", uid), {
+      coins: 0,
+      createdAt: serverTimestamp()
     });
+
+    alert("Registrasi berhasil!");
+  } catch (error) {
+    alert(error.message);
+  }
+});
+
     
     // ----- LOGIN -----
     btnLogin.addEventListener("click", async () => {
@@ -90,6 +98,12 @@
         alert("Gagal logout: " + err.message);
       }
     });
+
+import { getFirestore, doc, setDoc, serverTimestamp } 
+  from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+const db = getFirestore(app);
+    
     
     // ----- AUTO UI (tampilkan logout kalau sudah login) -----
     onAuthStateChanged(auth, (user) => {
