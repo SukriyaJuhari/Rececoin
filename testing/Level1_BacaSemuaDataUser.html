@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rececoin</title>
+</head>
+
+<body>
+  
+  <h2> Dashboard (Level1_BacaSemuaDataUser) </h2>
+  
+  <p><b>Email:</b> <span id="userEmail">Loading...</span></p>
+  <p><b>ID:</b> <span id="userUID">Loading...</span></p>
+  <p><b>Coins:</b> <span id="userCoins">Loading...</span></p>
+  <p><b>Leve:</b> <span id="userLevel">Loading...</span></p>
+  <p><b>Exp:</b> <span id="userExp">Loading...</span></p>
+  <br>
+  <br>
+  <h2>StudyHalaman</h2>
+    <p><a href="/testing/Level1_BacaSemuaDataUser.html">Level1 Baca Semua Data User</a></p>
+  <p><a href="/testing/Level2_UpdateDataExpOnly.html">Level2 Update Data ExpOnly</a></p>
+
+  <br>
+  <button id="btnLogout">Logout</button>
+  
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      collection,
+      getDoc,
+      setDoc,
+      updateDoc,
+      serverTimestamp,
+      query,
+      where,
+      limit,
+      getDocs
+    } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+    
+    // ====== CONFIG (ganti kalau perlu) ======
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfbW0F9qYu7SdIT2cG7IGOZcB3wsuskk8",
+      authDomain: "rececoin-76b27.firebaseapp.com",
+      projectId: "rececoin-76b27",
+      storageBucket: "rececoin-76b27.firebasestorage.app",
+      messagingSenderId: "173498076766",
+      appId: "1:173498076766:web:f757e9fa76e93b8727aecf"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    
+    // Elemen
+    const userEmail = document.getElementById("userEmail");
+    const userUID = document.getElementById("userUID");
+    const userCoins = document.getElementById("userCoins");
+    const userExp = document.getElementById("userExp");
+    const userLeve = document.getElementById("userLevel");
+    let currentUser = null;
+    let currentUserData = null;
+    
+    
+    
+    // saat login -> load user doc
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        location.href = "/login-singup.html";
+        return;
+      }
+      
+      currentUser = user;
+      
+      //user status
+      userEmail.textContent = user.email;
+      userUID.textContent = user.uid;
+      
+      
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
+      const dat = snap.data()
+      if (snap.exists()) {
+        console.log("Data user:", snap.data());
+        const dat = snap.data();
+        
+        userCoins.textContent = dat.Coin;
+        userExp.textContent = dat.Exp;
+        userLevel.textContent = dat.Level;
+        
+      }
+      
+      
+    });
+    
+    
+    /*
+    
+    
+    Firestore Rules:
+    
+    rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /{document=**} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+  }
+}
+
+
+    /*
+    
+    
+  </script>
+</body>
+
+</html>

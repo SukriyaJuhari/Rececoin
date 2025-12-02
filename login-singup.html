@@ -91,7 +91,7 @@
 
     try {
       await signInWithEmailAndPassword(auth, email, pass);
-      location.href = "dashboard.html";
+      location.href = "/dashboard.html";
     } catch (err) {
       alert("Gagal login: " + err.message);
     }
@@ -102,7 +102,7 @@
     try {
       await signOut(auth);
       alert("Logout berhasil");
-      location.href = "index.html";
+      location.href = "/login-singup.html";
     } catch (err) {
       alert("Gagal logout: " + err.message);
     }
@@ -114,6 +114,8 @@
       btnLogout.style.display = "inline";
       btnLogin.style.display = "none";
       btnRegister.style.display = "none";
+      location.href = "/dashboard.html";
+      
     } else {
       btnLogout.style.display = "none";
       btnLogin.style.display = "inline";
