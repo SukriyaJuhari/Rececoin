@@ -9,24 +9,25 @@
 
 <body>
   
-  <h2> Dashboard (Level1_BacaSemuaDataUser) </h2>
+  <h2> Dashboard (level3_Exp AntiHack) </h2>
   
   <p><b>Email:</b> <span id="userEmail">Loading...</span></p>
   <p><b>ID:</b> <span id="userUID">Loading...</span></p>
   <p><b>Coins:</b> <span id="userCoins">Loading...</span></p>
-  <p><b>Leve:</b> <span id="userLevel">Loading...</span></p>
+  <p><b>Level:</b> <span id="userLevel">Loading...</span></p>
   <p><b>Exp:</b> <span id="userExp">Loading...</span></p>
+  <button id="addExp">Tambah 10Exp</button>
   <br>
   <br>
   <h2>StudyHalaman</h2>
-  <p><a id="lisTugas"></a></p>  
+<p><a id="lisTugas"></a></p> 
   <br>
   <button id="btnLogout">Logout</button>
   
   
   <script type="module">
   document.getElementById("lisTugas").innerHTML=`
-  <p><a href="/testing/Level1_BacaSemuaDataUser.html">Level1 Baca Semua Data User</a></p>
+    <p><a href="/testing/Level1_BacaSemuaDataUser.html">Level1 Baca Semua Data User</a></p>
   <p><a href="/testing/Level2_UpdateDataExpOnly.html">Level2 Update Data ExpOnly</a></p>
   <p><a href="/testing/level3_CoinAntiHack.html">level3 Coin Anti Hack</a></p>
   <p><a href="/testing/level4_TingkatLanjutCoinAntiHack.html">level4 Tingkat Lanjut Coin Anti Hack</a></p>
@@ -66,7 +67,7 @@
     const userUID = document.getElementById("userUID");
     const userCoins = document.getElementById("userCoins");
     const userExp = document.getElementById("userExp");
-    const userLeve = document.getElementById("userLevel");
+    const userLevel = document.getElementById("userLevel");
     
     let currentUser = null;
     let currentUserData = null;
@@ -79,7 +80,6 @@
         location.href = "/login-singup.html";
         return;
       }
-      
       currentUser = user;
       
       //user status
@@ -91,40 +91,85 @@
       const snap = await getDoc(ref);
       const dat = snap.data()
       if (snap.exists()) {
-        console.log("Data user:", snap.data());
-        const dat = snap.data();
-        
-        userCoins.textContent = dat.Coin;
-        userExp.textContent = dat.Exp;
-        userLevel.textContent = dat.Level;
-        
+        console.log("Data user:", dat);
+        userCoins.textContent = dat.coins;
+        userExp.textContent = dat.exp;
+        userLevel.textContent = dat.level;
       }
+      
+      document.getElementById("addExp").onclick = async () => {
+        const ref = doc(db, "users", currentUser.uid);
+        
+        try {
+          // dapatkan data terbaru user
+          const snap = await getDoc(ref);
+          const dat = snap.data();
+           
+          
+          await updateDoc(ref, { 
+            exp: dat.exp+20,
+            lastExpUpdate: serverTimestamp() 
+          });
+          
+          
+          console.log("exp berhasil Ditambahkan!");
+        } catch (err) {
+          console.error("Gagal update:", err.message);
+        }
+      };
+      
       
       
     });
     
     
+    
+    
+    // LOGOUT
+    btnLogout.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        alert("Logout berhasil");
+        location.href = "/login-singup.html";
+      } catch (err) {
+        alert("Gagal logout: " + err.message);
+      }
+    });
+    
+    
     /*
-    
-    
-    Firestore Rules:
     
     rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /users/{userId} {
 
-    match /{document=**} {
-      allow read: if request.auth != null;
-      allow write: if false;
+      allow read: if request.auth != null && request.auth.uid == userId;
+
+      allow update: if 
+  request.auth != null &&
+  request.auth.uid == userId &&
+  request.resource.data.keys().hasOnly(["coins","level","exp","lastExpUpdate"]) &&
+  request.resource.data.coins == resource.data.coins &&
+  request.resource.data.level == resource.data.level &&
+  request.resource.data.exp is int &&
+  request.resource.data.lastExpUpdate is timestamp &&
+  // Anti-cheat: exp hanya boleh naik max 20 per update
+  request.resource.data.exp <= resource.data.exp + 20 &&
+
+  // Dan tidak boleh turun
+  request.resource.data.exp >= resource.data.exp;
+
+      allow create, delete: if false;
     }
-
   }
 }
 
 
-    /*
     
     
+    
+    */
   </script>
 </body>
 
