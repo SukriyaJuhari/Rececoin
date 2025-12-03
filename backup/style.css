@@ -1,93 +1,24 @@
-/* -------------------------- */
-/*        ROOT VARIABLES      */
-/* -------------------------- */
-:root {
-  --bg: linear-gradient(135deg, #f5f5f5, #eaeaea);
-  --text: #222;
-  --header-bg: rgba(255, 255, 255, 0.5);
-  --btn-bg: #4b0082;
-  --btn-text: #fff;
-  --card-bg: #CDC4C4;
-  --form-bg: rgba(183, 183, 183, 0.54);
-}
-
-/* Dark Mode */
-.dark {
-  --bg: linear-gradient(135deg, #190A45, #0D1752);
-  --text: #f2f2f2;
-  --header-bg: rgba(0, 0, 0, 0.4);
-  --btn-bg: #ffffff;
-  --btn-text: #4b0082;
-  --card-bg: rgba(255,255,255,0.1);
-  --form-bg: rgba(255,255,255,0.1);
-}
-  
-  
-  /* Mobile */
-@media (orientation: portrait) {
-  header h1 {
-    font-size: 16px;
-  }
-  
-  .hero {
-    max-height: 260px;
-  }
-  .hero h2 {
-    font-size: 40px;
-  }
-
-  .FORM {
-    width: 92%;
-  }
-}
-
-/* Desktop */
-@media (orientation: landscape) {
-  header h1 {
-    font-size: 24px;
-  }
-
-  .hero h2 {
-    font-size: 40px;
-  }
-}
-
-  
   body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transition: 0.3s ease-in-out;
-}
-
-  .theme-btn {
-  padding: 8px 12px;
-  font-size: 18px;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.theme-btn:hover {
-  opacity: 0.8;
-}
-
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4b0082, #6a0dad);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
   header {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--header-bg);
-  backdrop-filter: blur(6px);
-}
-
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* INI KUNCI */
+    align-items: center;
+    /* Agar rata tengah secara vertikal */
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+  }
   
   header h1 {
     margin: 0;
@@ -134,12 +65,13 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    max-height: 260px;
+    max-height: 460px;
     
   }
   
   .hero h2 {
     font-family: "Dancing Script", cursive;
+    font-size: 40px;
     margin-bottom: 3px;
   }
   
@@ -192,21 +124,21 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 20px;
-    margin-bottom: 20px;
     white-space: nowrap;
   }
   
   .item {
-  min-width: 120px;
-  height: 200px;
-  background: var(--card-bg);
-  color: var(--text);
-  border-radius: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+    min-width: 120px;
+    height: 200px;
+    background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
   
   .item img {
     width: 80px;
@@ -227,17 +159,16 @@
     
   }
   
-.FORM {
-  width: 80%;
-  max-width: 380px;
-  background: var(--form-bg);
-  color: var(--text);
-  border-radius: 18px;
-  padding: 25px;
-  margin: 10px;
-  backdrop-filter: blur(5px);
-}
-
+  .FORM {
+    width: 80%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 18px;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+    
+  }
   
   h2 {
     text-align: center;
@@ -263,21 +194,20 @@
   }
   
   .btn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  opacity: 0.85;
-}
-
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    color: #4b0082;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .btn:hover {
+    background: #ddd;
+  }
   
   .switch {
     text-align: center;

@@ -5,208 +5,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rececoin Platform</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4b0082, #6a0dad);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    header {
-      padding: 20px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      /* INI KUNCI */
-      align-items: center;
-      /* Agar rata tengah secara vertikal */
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(4px);
-    }
-    
-    header h1 {
-      margin: 0;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    
-    .btn-header {
-      text-align: center;
-      font-size: 12px;
-      padding: 8px 10px;
-      background: #ffffff;
-      color: #4b0082;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    
-    
-    nav {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    
-    nav a {
-      padding: 10px 18px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      transition: 0.2s;
-    }
-    
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.4);
-    }
-    
-    .hero {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      
-    }
-    
-    .hero h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-    
-    .hero p {
-      max-width: 90%;
-      font-size: 13px;
-      opacity: 0.9;
-    }
-    
-    .btn-primary {
-      text-align: center;
-      max-width: 30%;
-      margin-top: 20px;
-      padding: 12px 26px;
-      background: #ffffff;
-      color: #4b0082;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    
-    .btn-primary:hover {
-      background: #ddd;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.3);
-      font-size: 14px;
-    }
-    
-    #container_form {
-      padding-bottom: 30px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      
-    }
-    
-    .FORM {
-      width: 80%;
-      
-      max-width: 380px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 25px;
-      border-radius: 18px;
-      backdrop-filter: blur(7px);
-      box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
-      
-    }
-    h2 {
-      text-align: center;
-    }
-    
-    label {
-      font-size: 14px;
-      opacity: 0.9;
-    }
-    
-    input {
-      width: 100%;
-      padding: 10px 0px;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-    }
-    
-    input:focus {
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-    }
-    
-    .btn {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: #fff;
-      color: #4b0082;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    
-    .btn:hover {
-      background: #ddd;
-    }
-    
-    .switch {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
-      cursor: pointer;
-      opacity: 0.9;
-    }
-    
-    .switch:hover {
-      text-decoration: underline;
-    }
-    
-    .hidden {
-      display: none;
-    }
-  </style>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
   
   <header>
     <h1>Rececoin</h1>
+    <button id="themeToggle" class="theme-btn">🌙</button>
   </header>
   
   
   
   
   <section class="hero">
-    <h2>Selamat Datang di Rececoin</h2>
-    <p>Selamat datang di Rececoin, tempat di mana setiap detik dapat menjadi peluang. Jika selama ini waktu Anda terbuang, kini saatnya mengubahnya menjadi sesuatu yang lebih berharga.</p>
-    <p>
-      Di platform ini, kami mengajak Anda untuk jangan sia-siakan waktu Anda dan mulai dapatkan penghasilan tambahan melalui berbagai aktivitas menarik.
-      Mulai dari banyak pemasukan, tugas harian, mengisi survey, mini-game, dan membangun pertambangan coin untuk mendapatkan penghasilan pasif dan konsisten, semuanya tersedia untuk membantu Anda mendapatkan manfaat nyata secara bertahap.
-    </p>
-    <p>Rececoin bukan sekadar platform game—ini adalah tempat membangun kebiasaan produktif yang memberikan reward. </p>
-    <a href="#" class="btn-primary">Mulai Sekarang</a>
-    
+    <h2>Prove it now!, time is money</h2>
+    <i>Don't Waste Your Time!</i>
   </section>
+  
+  <!--conten autoScroll open -->
+<div class="scroll-container" id="autoScroll">
+  <div class="item" <img src="/assets/img/IMG_20251203_151105.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151147.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151235.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151326.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151422.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151537.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151622.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151729.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151826.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151910.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_151947.jpg" alt="item" ></div>
+  <div class="item" <img src="/assets/img/IMG_20251203_152039.jpg" alt="item" ></div>
+
+</div>
+  <!--conten autoScroll close -->
+
+
+  
   
   <div id="container_form">
     <div class="FORM">
@@ -245,17 +83,7 @@
   </div>
   
   
-  <script>
-    function showRegister() {
-      document.getElementById('loginForm').classList.add('hidden');
-      document.getElementById('registerForm').classList.remove('hidden');
-    }
-    
-    function showLogin() {
-      document.getElementById('registerForm').classList.add('hidden');
-      document.getElementById('loginForm').classList.remove('hidden');
-    }
-  </script>
+  <script type="module" src="/main.js"></script>
   
   <footer>
     © 2025 Rececoin Platform — All Rights Reserved
