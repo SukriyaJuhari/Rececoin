@@ -76,7 +76,9 @@
   .hero h1 {
     font-size: 30px ;
   }
-  
+    .hero h2 {
+    font-size: 60px;
+  }
   .FORM {
     width: 30%;
   }
