@@ -7,7 +7,7 @@
   --header-bg: rgba(255, 255, 255, 0.5);
   --btn-bg: #4b0082;
   --btn-text: #fff;
-  --card-bg: #CDC4C4;
+  --card-bg: #FFFFFF;
   --form-bg: rgba(183, 183, 183, 0.54);
 }
 
@@ -18,13 +18,17 @@
   --header-bg: rgba(0, 0, 0, 0.4);
   --btn-bg: #ffffff;
   --btn-text: #4b0082;
-  --card-bg: rgba(255,255,255,0.1);
-  --form-bg: rgba(255,255,255,0.1);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --form-bg: rgba(255, 255, 255, 0.1);
 }
-  
-  
-  /* Mobile */
+
+
+/* Mobile */
 @media (orientation: portrait) {
+  html {
+    max-width: auto;
+  }
+  
   header h1 {
     font-size: 16px;
   }
@@ -32,28 +36,94 @@
   .hero {
     max-height: 260px;
   }
+  
   .hero h2 {
     font-size: 40px;
   }
-
+  
   .FORM {
-    width: 92%;
+    width: 50%;
+  }
+  
+  #mobileAutoScroll {}
+  
+  .autoScroll {
+    background: url('assets/img/bgIMG_20251203_152452.png') no-repeat center center;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: auto;
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
+
+
+
+
 
 /* Desktop */
 @media (orientation: landscape) {
+  
+    html {
+    max-width: 1300px;
+  }
+  
+  
   header h1 {
     font-size: 24px;
   }
-
+  .hero h1 {
+    font-size: 30px ;
+  }
+  
+  .FORM {
+    width: 30%;
+  }
+  
+  #container_form {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  #deskAutoScroll {
+    
+    display: flex;
+    /* Kunci supaya justify-content & align-items bekerja */
+    justify-content: center;
+    /* Tengah horizontal */
+    align-items: center;
+    /* Tengah vertical */
+    width: 50%;
+    /* Lebar container */
+    height: 300px;
+    /* Atau sesuai tinggi yang diinginkan */
+    margin: 0 auto;
+    /* Tengah horizontal untuk container itu sendiri */
+    
+  }
+  
+  
+  .autoScroll {
+    width: auto;
+    
+    margin-bottom: 15%;
+    display: flex;
+    background: url('assets/img/bgIMG_20251203_152452.png') no-repeat center center;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: auto;
+  }
+  
   .hero h2 {
     font-size: 40px;
   }
 }
 
-  
-  body {
+
+body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: var(--bg);
@@ -64,7 +134,7 @@
   transition: 0.3s ease-in-out;
 }
 
-  .theme-btn {
+.theme-btn {
   padding: 8px 12px;
   font-size: 18px;
   background: var(--btn-bg);
@@ -79,7 +149,7 @@
   opacity: 0.8;
 }
 
-  header {
+header {
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -88,148 +158,161 @@
   backdrop-filter: blur(6px);
 }
 
+
+header h1 {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.btn-header {
+  text-align: center;
+  font-size: 12px;
+  padding: 8px 10px;
+  background: #ffffff;
+  color: #4b0082;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+
+nav {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-height: 260px;
   
-  header h1 {
-    margin: 0;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
+}
+
+.hero h2 {
+  font-family: "Dancing Script", cursive;
+  margin-bottom: 3px;
+}
+
+.hero p {
+  max-width: 90%;
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 5px;
+}
+
+.hero i {
+  font-size: 12px;
+  opacity: 0.9;
+  text-align: center;
+  color: #C7C7CC;
+}
+
+.btn-primary {
+  text-align: center;
+  max-width: 30%;
+  margin-top: 20px;
+  padding: 12px 26px;
+  background: #ffffff;
+  color: #4b0082;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #ddd;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  margin-top: auto;
+  /* KUNCI PENTING */
+}
+
+
+/*conten autoScroll open*/
+.autoScroll {
   
-  .btn-header {
-    text-align: center;
-    font-size: 12px;
-    padding: 8px 10px;
-    background: #ffffff;
-    color: #4b0082;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  
-  
-  nav {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  nav a {
-    padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    transition: 0.2s;
-  }
-  
-  nav a:hover {
-    background: rgba(255, 255, 255, 0.4);
-  }
-  
-  .hero {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    max-height: 260px;
-    
-  }
-  
-  .hero h2 {
-    font-family: "Dancing Script", cursive;
-    margin-bottom: 3px;
-  }
-  
-  .hero p {
-    max-width: 90%;
-    font-size: 13px;
-    opacity: 0.9;
-    margin: 5px;
-  }
-  
-  .hero i {
-    font-size: 12px;
-    opacity: 0.9;
-    text-align: center;
-    color: #C7C7CC;
-  }
-  
-  .btn-primary {
-    text-align: center;
-    max-width: 30%;
-    margin-top: 20px;
-    padding: 12px 26px;
-    background: #ffffff;
-    color: #4b0082;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  
-  .btn-primary:hover {
-    background: #ddd;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.3);
-    font-size: 14px;
-    margin-top: auto;
-    /* KUNCI PENTING */
-  }
-  
-  
-  /*conten autoScroll open*/
-  .scroll-container {
-    background: linear-gradient(135deg, #D8D5D5, #505050);
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 20px;
-    margin-bottom: 20px;
-    white-space: nowrap;
-  }
-  
-  .item {
+  max-height: 360px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  text-align: center;
+}
+
+.autoScroll img {
+  max-width: 600px;
+  max-height: 200;
+}
+
+.item {
   min-width: 120px;
-  height: 200px;
+  height: 140px;
   background: var(--card-bg);
   color: var(--text);
   border-radius: 14px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
+
+.item img {
   
-  .item img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 80%;
-  }
+  width: 80px;
+  height: 80px;
   
-  /*conten autoScroll close*/
+}
+
+.item b{
+  font-size: 12px;
+  display: flex;
   
+}
+
+/*conten autoScroll close*/
+
+
+
+/*Form registration open*/
+#container_form {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
   
-  
-  /*Form registration open*/
-  #container_form {
-    padding-bottom: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
-  }
-  
+}
+
 .FORM {
-  width: 80%;
-  max-width: 380px;
   background: var(--form-bg);
   color: var(--text);
   border-radius: 18px;
@@ -238,31 +321,31 @@
   backdrop-filter: blur(5px);
 }
 
-  
-  h2 {
-    text-align: center;
-  }
-  
-  label {
-    font-size: 14px;
-    opacity: 0.9;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px 0px;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-  }
-  
-  input:focus {
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-  }
-  
-  .btn {
+
+h2 {
+  text-align: center;
+}
+
+label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+input {
+  width: 100%;
+  padding: 10px 0px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.btn {
   width: 100%;
   padding: 12px;
   border: none;
@@ -278,21 +361,21 @@
   opacity: 0.85;
 }
 
-  
-  .switch {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    cursor: pointer;
-    opacity: 0.9;
-  }
-  
-  .switch:hover {
-    text-decoration: underline;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  /*Form registration close*/
+
+.switch {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.switch:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+/*Form registration close*/
