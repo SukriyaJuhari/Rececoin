@@ -26,8 +26,9 @@
 	</section>
 	
 	<!--conten autoScroll open -->
-	<div id="mobileAutoScroll"></div>
-	
+
+	<div id="mobileAutoScroll" style="text-align: center;"></div>
+
 	<!--conten autoScroll close -->
 	
 	
@@ -36,7 +37,7 @@
 	<div id="container_form">
 		
 		<!--conten autoScroll open -->
-		<div id="deskAutoScroll"></div>
+		<div id="deskAutoScroll" style="text-align: center;"></div>
 		
 		<!--conten autoScroll close -->
 		<div class="FORM">
@@ -51,7 +52,7 @@
 				
 				<button class="btn">Masuk</button>
 				
-				<div class="switch" onclick="showRegister()">Belum punya akun? Daftar</div>
+				<div class="switch" id="btnShowRegister">Belum punya akun? Daftar</div>
 			</div>
 			
 			<!-- REGISTER FORM -->
@@ -67,8 +68,7 @@
 				<input type="password" placeholder="Ulangi Password">
 				
 				<button class="btn">Daftar</button>
-				
-				<div class="switch" onclick="showLogin()">Sudah punya akun? Login</div>
+				<div class="switch" id="btnShowLogin">Sudah punya akun? Login</div>
 			</div>
 			
 		</div>
@@ -76,6 +76,7 @@
 	
 	
 	<script type="module" src="main.js"></script>
+	
 	
 	<footer>
 		© 2025 Rececoin Platform — All Rights Reserved

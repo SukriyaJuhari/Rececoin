@@ -18,7 +18,7 @@
   --header-bg: rgba(0, 0, 0, 0.4);
   --btn-bg: #ffffff;
   --btn-text: #4b0082;
-  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-bg: #FFFFFF;
   --form-bg: rgba(255, 255, 255, 0.1);
 }
 
@@ -38,7 +38,7 @@
   }
   
   .hero h2 {
-    font-size: 40px;
+    font-size: 30px;
   }
   
   .FORM {
@@ -48,13 +48,13 @@
   #mobileAutoScroll {}
   
   .autoScroll {
-    background: url('assets/img/bgIMG_20251203_152452.png') no-repeat center center;
-    background-size: cover;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    padding-left: auto;
     width: 100%;
     margin-bottom: 20px;
+  }
+  
+  .boxItem {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 
@@ -65,7 +65,7 @@
 /* Desktop */
 @media (orientation: landscape) {
   
-    html {
+  html {
     max-width: 1300px;
   }
   
@@ -73,21 +73,25 @@
   header h1 {
     font-size: 24px;
   }
+  
   .hero h1 {
-    font-size: 30px ;
+    font-size: 30px;
   }
-    .hero h2 {
+  
+  .hero h2 {
     font-size: 60px;
   }
+  
   .FORM {
     width: 30%;
   }
   
-  #container_form {
-    display: flex;
-    align-items: center;
-  }
   
+  #container_form {
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
   
   #deskAutoScroll {
     
@@ -106,17 +110,20 @@
     
   }
   
+  .boxItem {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-height: 388px;
+  }
+  
+  .boxItem h3 {
+    font-size: 18px;
+    margin: 0px;
+  }
   
   .autoScroll {
     width: auto;
-    
-    margin-bottom: 15%;
-    display: flex;
-    background: url('assets/img/bgIMG_20251203_152452.png') no-repeat center center;
-    background-size: cover;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    padding-left: auto;
+    border-radius: 15px;
   }
   
   .hero h2 {
@@ -135,6 +142,14 @@ body {
   flex-direction: column;
   transition: 0.3s ease-in-out;
 }
+
+i {
+  font-size: 12px;
+  opacity: 0.5;
+  text-align: center;
+  color: var(--text);
+}
+
 
 .theme-btn {
   padding: 8px 12px;
@@ -206,7 +221,8 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  max-height: 260px;
+  max-height: 210px;
+  margin-bottom: 30px;
   
 }
 
@@ -220,13 +236,6 @@ nav a:hover {
   font-size: 13px;
   opacity: 0.9;
   margin: 5px;
-}
-
-.hero i {
-  font-size: 12px;
-  opacity: 0.9;
-  text-align: center;
-  color: #C7C7CC;
 }
 
 .btn-primary {
@@ -256,10 +265,22 @@ footer {
 }
 
 
+
+.boxItem {
+  background: url('assets/img/bgIMG_20251203_152452.png') no-repeat center center;
+  background-size: cover;
+  border: 1px solid var(--header-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: auto;
+  margin: 10px;
+  
+}
+
 /*conten autoScroll open*/
 .autoScroll {
-  
   max-height: 360px;
+  width: auto;
   display: flex;
   gap: 10px;
   overflow-x: auto;
@@ -267,8 +288,9 @@ footer {
   white-space: nowrap;
   display: flex;
   justify-content: center;
-  align-items: center ;
+  align-items: center;
   text-align: center;
+  padding-left: 100%;
 }
 
 .autoScroll img {
@@ -276,11 +298,26 @@ footer {
   max-height: 200;
 }
 
+#mobileAutoScroll h3 {
+  margin: 0px;
+  padding: 0px;
+  margin: 0;
+  text-align: center;
+  
+}
+.deskAutoScroll h3{
+  margin: 0px;
+  padding: 0px;
+  margin: 0;
+  text-align: center;
+}
+
+
 .item {
-  min-width: 120px;
-  height: 140px;
+  min-width: 126px;
+  height: 146px;
   background: var(--card-bg);
-  color: var(--text);
+  color: #222;
   border-radius: 14px;
   display: flex;
   justify-content: center;
@@ -290,14 +327,12 @@ footer {
 
 
 .item img {
-  
-  width: 80px;
-  height: 80px;
-  
+  width: 98px;
+  height: 98px;
 }
 
-.item b{
-  font-size: 12px;
+.item b {
+  font-size: 10px;
   display: flex;
   
 }
@@ -311,11 +346,11 @@ footer {
   padding-bottom: 30px;
   display: flex;
   justify-content: center;
-  
 }
 
 .FORM {
   background: var(--form-bg);
+  border: 1px solid var(--header-bg);
   color: var(--text);
   border-radius: 18px;
   padding: 25px;
