@@ -34,11 +34,12 @@
   }
   
   .hero {
-    max-height: 260px;
+    
+    max-height: 120px;
   }
   
-  .hero h2 {
-    font-size: 30px;
+  .hero h1 {
+    font-size: 40px;
   }
   
   .FORM {
@@ -69,23 +70,15 @@
     max-width: 1300px;
   }
   
-  
   header h1 {
     font-size: 24px;
   }
-  
-  .hero h1 {
-    font-size: 30px;
-  }
-  
-  .hero h2 {
+    .hero h1 {
     font-size: 60px;
   }
-  
   .FORM {
     width: 30%;
   }
-  
   
   #container_form {
     padding-bottom: 30px;
@@ -116,19 +109,19 @@
     max-height: 388px;
   }
   
-  .boxItem h3 {
-    font-size: 18px;
-    margin: 0px;
+  #deskAutoScroll h3 {
+    margin-top: 20px;
+    font-size: 26px;
+    margin-bottom: 0px;
   }
   
   .autoScroll {
     width: auto;
     border-radius: 15px;
+    
   }
   
-  .hero h2 {
-    font-size: 40px;
-  }
+
 }
 
 
@@ -144,7 +137,7 @@ body {
 }
 
 i {
-  font-size: 12px;
+  font-size: 14px;
   opacity: 0.5;
   text-align: center;
   color: var(--text);
@@ -221,14 +214,14 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  max-height: 210px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   
 }
 
-.hero h2 {
+.hero h1 {
   font-family: "Dancing Script", cursive;
   margin-bottom: 3px;
+  text-align: center;
 }
 
 .hero p {
@@ -238,21 +231,12 @@ nav a:hover {
   margin: 5px;
 }
 
-.btn-primary {
-  text-align: center;
-  max-width: 30%;
-  margin-top: 20px;
-  padding: 12px 26px;
-  background: #ffffff;
-  color: #4b0082;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.btn-primary:hover {
-  background: #ddd;
+line{
+  
+  border: 1px solid var(--form-bg);
+  opacity: 0.5;
+  border-radius: 1000px;
+  width: 100%;
 }
 
 footer {
@@ -299,19 +283,25 @@ footer {
 }
 
 #mobileAutoScroll h3 {
-  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
   padding: 0px;
-  margin: 0;
-  text-align: center;
-  
-}
-.deskAutoScroll h3{
-  margin: 0px;
-  padding: 0px;
-  margin: 0;
   text-align: center;
 }
 
+#deskAutoScroll{
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+#deskAutoScroll h3{
+  margin:0px;
+  padding: 0px;
+  font-size: 26;
+  text-align: center;
+  line-height: 1;
+}
 
 .item {
   min-width: 126px;
@@ -332,7 +322,7 @@ footer {
 }
 
 .item b {
-  font-size: 10px;
+  font-size: 14px;
   display: flex;
   
 }
@@ -359,7 +349,7 @@ footer {
 }
 
 
-h2 {
+.FORM h2 {
   text-align: center;
 }
 
